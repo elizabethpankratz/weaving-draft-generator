@@ -1,0 +1,63 @@
+.DS_Store
+
+## Open files
+~*
+.~lock.*
+
+## Big models 
+*.rds
+*.Rda
+
+## Core latex/pdflatex auxiliary files:
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+
+## Intermediate documents:
+*.dvi
+*-converted-to.*
+# these rules might exclude image files for figures etc.
+#*.ps
+*.eps
+#*.pdf
+
+## Bibliography auxiliary files (bibtex/biblatex/biber):
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.brf
+*.run.xml
+
+## Build tool auxiliary files:
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdfsync
+
+## Beamer files:
+*.nav
+*.snm
+*.vrb
+
+## R:
+.Rhistory
+.md
+
+## Python-related peripheral stuff:
+.ipynb_checkpoints
+__pycache__
+
+## Vim stuff:
+*.swp
+*~
