@@ -169,7 +169,7 @@ def display_full_draft(tieup_spec, thread_spec, treadle_spec, n_pixel_sep=1, ove
         treadle_spec: np array of arrays; outer arrays = weft row, inner arrays = integer values representing active treadles.
         n_pixel_sep: int, the number of pixels as whitespace padding between each rectangle in draft (default 1)
         overlay_grid: bool, whether or not to include pixel grid (default True)
-        filename: string ending in '.pdf', the desired filename (potentially incl. full path) to save the draft under (default None)
+        pdf_filename: string ending in '.pdf', the desired filename (potentially incl. full path) to save the draft under (default None)
     Returns:
         Nothing, displays image and, if filename not None, saves image in provided path.
     """
