@@ -246,8 +246,8 @@ def display_full_draft(tieup_spec, thread_spec, treadle_spec, n_pixel_sep=1, ove
 
 
 if __name__ == '__main__':
-    print("2x2 twill (herringbone threading)")
+    print("Displaying draft for 2x2 twill (herringbone threading, straight treadling)")
     twill2x2_tieup = np.array([[1, 0, 0, 1], [1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1]])
     straight_treadle_4 = np.array([[0], [1], [2], [3]] * 6)
     herringbone_thread = np.array(np.concatenate([[0, 1, 2, 3] * 2 + [1, 0, 3, 2] * 2] * 3))
-    display_full_draft(twill2x2_tieup, herringbone_thread, straight_treadle_4, filename='sample_drafts/2x2twill_herringbone.pdf')
+    display_full_draft(twill2x2_tieup, herringbone_thread, straight_treadle_4, pdf_filename='sample_drafts/2x2twill_herringbone.pdf')
