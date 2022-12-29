@@ -33,6 +33,7 @@ def display_fabric(fabric_array):
     plt.gray()
     plt.axis('off')
     plt.imshow(inv(fabric_array))
+    plt.show()
 
 
 def gen_bool_array(numbered_array):
@@ -74,6 +75,7 @@ def display_threading(thread_spec):
     plt.axis('off')
     plt.gray()
     plt.imshow(inv(np.rot90(gen_bool_array(thread_spec))))
+    plt.show()
 
 
 def display_treadling(treadle_spec):
@@ -86,6 +88,7 @@ def display_treadling(treadle_spec):
     plt.gray()
     plt.axis('off')
     plt.imshow(inv(gen_bool_array(treadle_spec)))
+    plt.show()
 
 
 def display_tieup(tieup_spec):
@@ -98,11 +101,12 @@ def display_tieup(tieup_spec):
     plt.gray()
     plt.axis('off')
     plt.imshow(inv(np.flip(tieup_spec, axis=0)))
+    plt.show()
 
 
 def gen_fabric(tieup_spec, treadle_spec, thread_spec):
     """
-    Uses provided tie-up, treadling, and threading to genereate the resulting fabric.
+    Generates fabric based on the provided tie-up, treadling, and threading.
 
     Args:
         tieup_spec: np array of arrays; outer arrays = harnesses bottom to top, inner arrays = bool values indicating tie-up to treadles.
@@ -153,7 +157,7 @@ def gen_fabric(tieup_spec, treadle_spec, thread_spec):
     return drawdown
 
 
-def display_full_draft(tieup_spec, treadle_spec, thread_spec, n_pixel_sep=1, overlay_grid=True, filename=None):
+def display_full_draft(tieup_spec, treadle_spec, thread_spec, n_pixel_sep=1, overlay_grid=True, pdf_filename=None):
     """
     Generates fabric based on provided tie-up, treadling, and threading. 
     Combines these four components into a traditionally-formatted weaving draft.
@@ -232,18 +236,18 @@ def display_full_draft(tieup_spec, treadle_spec, thread_spec, n_pixel_sep=1, ove
         for col_idx in range(treadle_start_x, treadle_start_x + treadle_cols+1):
             plt.vlines(x = col_idx - 0.5, ymin = treadle_start_y-0.5, ymax = treadle_start_y + treadle_rows - 0.5, color='black', linewidth=0.3)
 
-    if filename != None:
+    if pdf_filename != None:
         # Saving img as pdf gives best result; rasterised image formats don't align 
         # the hlines and vlines with the cells very nicely.
-        assert filename.endswith('.pdf'), 'Please provide a filename with a .pdf extension, e.g., "myfile.pdf".'
-        plt.savefig(filename, dpi=300, bbox_inches='tight')
+        assert pdf_filename.endswith('.pdf'), 'Please provide a filename with a .pdf extension, e.g., "myfile.pdf".'
+        plt.savefig(pdf_filename, dpi=300, bbox_inches='tight')
     
     plt.show()
 
 
 if __name__ == '__main__':
     print('Example 1/4: Plain weave')
-    # NB: If running on command line, move to next example by closing the pop-up window.
+    # NB: If running this script on the command line, move to the next example by closing the pop-up window.
     pw_tieup = np.array([[1, 0], [0, 1]])
     # The number at the ends of these variable names represents the number of treadles or harnesses.
     straight_treadle_2 = np.array([[1], [0]] * 8)
