@@ -157,7 +157,7 @@ def gen_fabric(tieup_spec, treadle_spec, thread_spec):
     return drawdown
 
 
-def display_full_draft(tieup_spec, treadle_spec, thread_spec, n_pixel_sep=1, overlay_grid=True, pdf_filename=None):
+def display_full_draft(tieup_spec, thread_spec, treadle_spec, n_pixel_sep=1, overlay_grid=True, pdf_filename=None):
     """
     Generates fabric based on provided tie-up, treadling, and threading. 
     Combines these four components into a traditionally-formatted weaving draft.
@@ -165,8 +165,8 @@ def display_full_draft(tieup_spec, treadle_spec, thread_spec, n_pixel_sep=1, ove
 
     Args:
         tieup_spec: np array of arrays; outer arrays = harnesses bottom to top, inner arrays = bool values indicating tie-up to treadles.
-        treadle_spec: np array of arrays; outer arrays = weft row, inner arrays = integer values representing active treadles.
         thread_spec: np array; integer values represent harness of each thread.
+        treadle_spec: np array of arrays; outer arrays = weft row, inner arrays = integer values representing active treadles.
         n_pixel_sep: int, the number of pixels as whitespace padding between each rectangle in draft (default 1)
         overlay_grid: bool, whether or not to include pixel grid (default True)
         filename: string ending in '.pdf', the desired filename (potentially incl. full path) to save the draft under (default None)
@@ -246,26 +246,8 @@ def display_full_draft(tieup_spec, treadle_spec, thread_spec, n_pixel_sep=1, ove
 
 
 if __name__ == '__main__':
-    print('Example 1/4: Plain weave')
-    # NB: If running this script on the command line, move to the next example by closing the pop-up window.
-    pw_tieup = np.array([[1, 0], [0, 1]])
-    # The number at the ends of these variable names represents the number of treadles or harnesses.
-    straight_treadle_2 = np.array([[1], [0]] * 8)
-    straight_thread_2 = np.array([0, 1] * 10)
-    display_full_draft(pw_tieup, straight_treadle_2, straight_thread_2, filename='sample_drafts/plainweave.pdf')
-    
-    print("Example 2/4: 3x1 twill")
-    twill3x1_tieup = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
-    straight_treadle_4 = np.array([[0], [1], [2], [3]] * 6)
-    straight_thread_4 = np.array([0, 1, 2, 3] * 8)
-    display_full_draft(twill3x1_tieup, straight_treadle_4, straight_thread_4, filename='sample_drafts/3x1twill.pdf')
-    
-    print("Example 3/4: 2x2 twill (straight threading)")
+    print("2x2 twill (herringbone threading)")
     twill2x2_tieup = np.array([[1, 0, 0, 1], [1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 1, 1]])
-    # We can reuse the same straight treadling and threading from before!
-    display_full_draft(twill2x2_tieup, straight_treadle_4, straight_thread_4, filename='sample_drafts/2x2twill_straight.pdf')
-
-    print("Example 4/4: 2x2 twill (herringbone threading)")
+    straight_treadle_4 = np.array([[0], [1], [2], [3]] * 6)
     herringbone_thread = np.array(np.concatenate([[0, 1, 2, 3] * 2 + [1, 0, 3, 2] * 2] * 3))
-    # We can reuse the same tie-up and straight treadling as above.
-    display_full_draft(twill2x2_tieup, straight_treadle_4, herringbone_thread, filename='sample_drafts/2x2twill_herringbone.pdf')
+    display_full_draft(twill2x2_tieup, herringbone_thread, straight_treadle_4, filename='sample_drafts/2x2twill_herringbone.pdf')
