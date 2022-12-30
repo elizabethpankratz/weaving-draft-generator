@@ -104,14 +104,14 @@ def display_tieup(tieup_spec):
     plt.show()
 
 
-def gen_fabric(tieup_spec, treadle_spec, thread_spec):
+def gen_fabric(tieup_spec, thread_spec, treadle_spec):
     """
     Generates fabric based on the provided tie-up, treadling, and threading.
 
     Args:
         tieup_spec: np array of arrays; outer arrays = harnesses bottom to top, inner arrays = bool values indicating tie-up to treadles.
-        treadle_spec: np array of arrays; outer arrays = weft row, inner arrays = integer values representing active treadles.
         thread_spec: np array; integer values represent harness of each thread.
+        treadle_spec: np array of arrays; outer arrays = weft row, inner arrays = integer values representing active treadles.
     Returns:
         np array of shape (len(treadle_spec), len(thread_spec)) with values 0 (weft-face) and 1 (warp-face)
     """
@@ -181,7 +181,7 @@ def display_full_draft(tieup_spec, thread_spec, treadle_spec, n_pixel_sep=1, ove
 
     # Generate the second "row" by generating fabric drawdown and combining it with tall padding and treadling.
     padding_lower = np.zeros((len(treadle_spec), n_pixel_sep))
-    fabric_bool = gen_fabric(tieup_spec, treadle_spec, thread_spec)
+    fabric_bool = gen_fabric(tieup_spec, thread_spec, treadle_spec)
     treadle_bool = gen_bool_array(treadle_spec)
     lower = np.column_stack([fabric_bool, padding_lower, treadle_bool])
 
