@@ -203,7 +203,6 @@ def display_full_draft(tieup_spec, thread_spec, treadle_spec, n_pixel_sep=1, ove
         # Threading grid
         thread_rows, thread_cols = thread_bool.shape
         for row_idx in range(thread_rows+1):
-            # only subtracting 3.5 from xmax here so that hline is long enough to create corner at top right
             plt.hlines(y = row_idx - 0.5, xmin = -0.5, xmax = thread_cols - 0.5, color='black', linewidth=0.3)
         for col_idx in range(thread_cols+1):
             plt.vlines(x = col_idx - 0.5, ymin = -0.5, ymax = thread_rows - 0.5, color='black', linewidth=0.3)
@@ -212,7 +211,6 @@ def display_full_draft(tieup_spec, thread_spec, treadle_spec, n_pixel_sep=1, ove
         tieup_rows, tieup_cols = tieup_bool.shape
         tieup_start_x = thread_bool.shape[1] + n_pixel_sep  # offset
         for row_idx in range(tieup_rows+1):
-            # subtracting 0.64 from xmin and 0.35 from xmax instead of 0.5 to get square corners at bottom edges
             plt.hlines(y = row_idx - 0.5, xmin = tieup_start_x - 0.5, xmax = tieup_start_x + tieup_cols - 0.5, color='black', linewidth=0.3)
         for col_idx in range(tieup_start_x, tieup_start_x + tieup_cols+1):
             plt.vlines(x = col_idx - 0.5, ymin = -0.5, ymax = tieup_rows - 0.5, color='black', linewidth=0.3)
@@ -221,7 +219,6 @@ def display_full_draft(tieup_spec, thread_spec, treadle_spec, n_pixel_sep=1, ove
         fabric_rows, fabric_cols = fabric_bool.shape
         fabric_start_y = thread_bool.shape[0] + n_pixel_sep # offset
         for row_idx in range(fabric_start_y, fabric_start_y + fabric_rows+1):
-            # only subtracting 3.5 from xmax here so that hline is long enough to get square corner at top right
             plt.hlines(y = row_idx - 0.5, xmin = -0.5, xmax = fabric_cols - 0.5, color='black', linewidth=0.3)
         for col_idx in range(fabric_cols+1):
             plt.vlines(x = col_idx - 0.5, ymin = fabric_start_y-0.5, ymax = fabric_start_y + fabric_rows - 0.5, color='black', linewidth=0.3)
@@ -231,7 +228,6 @@ def display_full_draft(tieup_spec, thread_spec, treadle_spec, n_pixel_sep=1, ove
         treadle_start_x =  fabric_bool.shape[1] + n_pixel_sep  # offset
         treadle_start_y = thread_bool.shape[0] + n_pixel_sep   # offset
         for row_idx in range(treadle_start_y, treadle_start_y + treadle_rows+1):
-            # subtracting 0.64 from xmin and 0.35 from xmax instead of 0.5 to get square corners at bottom edges
             plt.hlines(y = row_idx - 0.5, xmin = treadle_start_x - 0.5, xmax =treadle_start_x + treadle_cols - 0.5, color='black', linewidth=0.3)
         for col_idx in range(treadle_start_x, treadle_start_x + treadle_cols+1):
             plt.vlines(x = col_idx - 0.5, ymin = treadle_start_y-0.5, ymax = treadle_start_y + treadle_rows - 0.5, color='black', linewidth=0.3)
